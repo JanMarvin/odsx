@@ -1,0 +1,28 @@
+Type: Package
+Package: odsx
+Title: Convert 'openxlsx2' Workbooks from and to 'ods' Files
+Version: 0.0.0.9000
+Language: en-US
+Authors@R: c(
+  person("Jan Marvin", "Garbuszus", email = "jan.garbuszus@ruhr-uni-bochum.de", role = c("aut", "cre"))
+  )
+Description: Converts 'openxlsx2' workbooks into OpenDocument Spreadsheet
+    ('ods') and flat 'fods' files and loads 'ods' and 'fods' files into
+    'openxlsx2' workbooks.
+License: MIT + file LICENSE
+Depends:
+    R (>= 3.5.0)
+Imports:
+    openxlsx2 (>= 1.31),
+    Rcpp,
+    utils
+LinkingTo:
+    openxlsx2,
+    Rcpp
+Suggests:
+    testthat (>= 3.0.0),
+    zip
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.1
