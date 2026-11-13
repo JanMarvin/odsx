@@ -1,7 +1,7 @@
 Type: Package
 Package: odsx
 Title: Convert 'openxlsx2' Workbooks from and to 'ods' Files
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Language: en-US
 Authors@R: c(
   person("Jan Marvin", "Garbuszus", email = "jan.garbuszus@ruhr-uni-bochum.de", role = c("aut", "cre"))

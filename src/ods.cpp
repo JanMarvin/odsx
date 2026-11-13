@@ -1363,7 +1363,7 @@ static std::string ods_formula_to_of(const std::string& f, int64_t drow, int64_t
   std::string out = "of:=";
   std::vector<bool> function_parens;
   bool in_array = false, last_ref = false;
-  size_t n = f.size(), i = 0;
+  size_t n = f.size(), i = std::min(f.find_first_not_of('='), n);
   while (i < n) {
     char c = f[i];
     std::string ref;

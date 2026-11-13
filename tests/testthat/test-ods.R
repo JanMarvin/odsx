@@ -1624,3 +1624,18 @@ test_that("the layout of pivot tables roundtrips", {
   expect_match(pt[2], "compact=\"0\"", fixed = TRUE)
   expect_false(grepl("outline=\"1\"", pt[3], fixed = TRUE))
 })
+
+test_that("a leading equals sign of a formula is written once", {
+  wb <- wb_workbook()$add_worksheet()$add_data(x = "https://x.org")
+  wb$add_formula(dims = "A1", x = "=HYPERLINK(\"https://x.org\",\"a\")")
+  wb$add_formula(dims = "A2", x = "SUM(1,2)")
+
+  fl <- tempfile(fileext = ".ods")
+  write_ods(wb, fl)
+  exdir <- tempfile()
+  utils::unzip(fl, files = "content.xml", exdir = exdir)
+  content <- paste(readLines(file.path(exdir, "content.xml"), warn = FALSE), collapse = "")
+  expect_match(content, "table:formula=\"of:=HYPERLINK(&quot;https://x.org&quot;;&quot;a&quot;)\"", fixed = TRUE)
+  expect_match(content, "table:formula=\"of:=SUM(1;2)\"", fixed = TRUE)
+  expect_false(grepl("of:==", content, fixed = TRUE))
+})
